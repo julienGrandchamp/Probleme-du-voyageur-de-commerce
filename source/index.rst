@@ -13,6 +13,7 @@ Problème du voyageur de commerce
 
     introduction.rst
     chapitre-01.md
+    chapitre-02.md
     conclusion.rst
     references.rst
 
