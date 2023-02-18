@@ -12,6 +12,7 @@ Problème du voyageur de commerce
     :caption: Table des matières
 
     introduction.rst
+    chapitre-01.md
     conclusion.rst
     references.rst
 

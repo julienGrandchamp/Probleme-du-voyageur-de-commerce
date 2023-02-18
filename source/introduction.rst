@@ -3,16 +3,36 @@
 Introduction
 ############
 
-..
-    Ceci est un commentaire
+Il existe de nombreux problèmes 
+qui concernent autant les domaines 
+des mathématiques que des domaines 
+liés à l’informatique. Le problème 
+du voyageur de commerce – aussi nommé 
+le problème du commis voyageur ou, en 
+anglais, the *Traveling salesman problem* – 
+en fait partie.
 
-Écrivez votre introduction. L'introduction doit contenir les éléments suivants
+Si mon projet informatique s’intéresse 
+à ce sujet, c’est que la collaboration 
+entre les branches de l’informatique 
+et le domaine des mathématiques à travers 
+un problème non résolu attise ma curiosité. 
+Ayant la volonté de devenir mathématicien 
+plus tard et ayant aussi un large intérêt 
+quant aux domaines de l’informatique, il me 
+paraissait évident de présenter le problème 
+du voyageur de commerce.
 
-- évoquer le but du projet (motivation personnelle)
-- évoquer les notions scientifiques / techiques utilisées dans le projet
-- Motivation
+Globalement, la donnée du problème est assez 
+simple et intuitive. Il faut déterminer, à 
+partir d’une liste de points et les distance 
+entre toutes les paires de points, le trajet le 
+plus court possible qui passe par chaque point 
+qu’une seule et unique fois. On peut se représenter les 
+points comme des villes qu’on souhaite visiter 
+de manière la plus optimale possible. 
 
-  - S'il s'agit d'un sujet théorique, évoquer l'intérêt / l'importance du sujet
-  - S'il s'agit d'un projet pratique (programmation / etc ...), indiquer ce que
-    votre projet apporte, ce qu'il permet de faire.
+Le problème du voyageur de commerce n’est pour 
+l’instant pas résolu de manière exacte avec des 
+algorithmes, ceci malgré la simplicité de l’énoncé. 
 
