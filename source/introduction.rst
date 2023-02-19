@@ -5,21 +5,20 @@ Introduction
 
 Il existe de nombreux problèmes 
 qui concernent autant les domaines 
-des mathématiques que des domaines 
-liés à l’informatique. Le problème 
+des mathématiques ceux liés à l’informatique. Le problème 
 du voyageur de commerce – aussi nommé 
 le problème du commis voyageur ou, en 
 anglais, the *Traveling salesman problem* – 
 en fait partie.
 
-Si mon projet informatique s’intéresse 
+Si mon projet d'OC s’intéresse 
 à ce sujet, c’est que la collaboration 
 entre les branches de l’informatique 
-et le domaine des mathématiques à travers 
-un problème non résolu attise ma curiosité. 
+et des mathématiques à travers 
+une énigme encore non résolue attise ma curiosité. 
 Ayant la volonté de devenir mathématicien 
 plus tard et ayant aussi un large intérêt 
-quant aux domaines de l’informatique, il me 
+quant à l’informatique, il me 
 paraissait évident de présenter le problème 
 du voyageur de commerce.
 
@@ -27,12 +26,13 @@ Globalement, la donnée du problème est assez
 simple et intuitive. Il faut déterminer, à 
 partir d’une liste de points et les distance 
 entre toutes les paires de points, le trajet le 
-plus court possible qui passe par chaque point 
-qu’une seule et unique fois. On peut se représenter les 
+plus court possible qui passe par chaque noeud 
+qu’une seule et unique fois avant de retourner à l'emplacement
+initial. On peut se représenter les 
 points comme des villes qu’on souhaite visiter 
-de manière la plus optimale possible. 
+de la manière la plus optimale possible. 
 
 Le problème du voyageur de commerce n’est pour 
-l’instant pas résolu de manière exacte avec des 
-algorithmes, ceci malgré la simplicité de l’énoncé. 
+l’instant pas résolu de manière exacte pour un grand nombre
+de villes avec des algorithmes, ceci malgré la simplicité de l’énoncé. 
 

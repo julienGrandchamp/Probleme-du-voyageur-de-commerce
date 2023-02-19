@@ -1,7 +1,11 @@
 # Définition, histoire et utilité
 
-Le problème est nommé pour la première fois dès 1832 dans un manuel à destination de commis voyageurs. Il est ensuite repris par William Rowan Hamilton, qui posa ce problème sous la forme d’un jeu dès 1859 avec l’énoncé suivant : « Un voyageur de commerce doit visiter une et une seule fois un nombre fini de villes et revenir à son point d’origine. Trouvez l’ordre de visite des villes qui minimise la distance totale parcourue par le voyageur ». Il est ensuite repris par de nombreux mathématiciens et informaticiens, qui l’étudient encore à ce jour.
+Le problème est nommé pour la première fois dès 1832 dans un manuel à destination de commis voyageurs. Il est ensuite repris par William Rowan Hamilton, qui posa ce problème sous la forme d’un jeu dès 1859 avec l’énoncé suivant : 
 
-Ce problème a permis plusieurs évolutions mathématiques, comme l’optimisation linéaire mixte – ou, en anglais, mixed integer programming – et la méthode de séparation et évaluation. Nous ne reviendrons cependant pas sur ces notions dans le cadre de notre projet. 
+« Un voyageur de commerce doit visiter une et une seule fois un nombre fini de villes et revenir à son point d’origine. Trouvez l’ordre de visite des villes qui minimise la distance totale parcourue par le voyageur ». 
 
-Rapidement, nous avons décelé de nombreuses branches où l’application de ce problème pourrait être utile. Pour donner quelques exemples, la résolution du problème du commis voyageur pourrait apporter beaucoup à la résolution de problèmes de logistique, de transport de marchandises ou de personnes. Ceci pourrait même apporter une révolution dans le monde de l’industrie. En effet, la résolution de ce problème pourrait par exemple optimiser le fonctionnement des machines, comme percer plusieurs points sur une carte électronique le plus rapidement possible en réduisant au maximum les trajets à effectuer.
+Il est ensuite repris par de nombreux mathématiciens et informaticiens, qui l’étudient encore à ce jour.
+
+Ce problème a permis plusieurs évolutions mathématiques, comme l’optimisation linéaire mixte – ou, en anglais, mixed integer programming – et la méthode de séparation et évaluation. Nous ne reviendrons cependant pas sur la première de ces notions dans le cadre de notre projet. 
+
+Rapidement, nous avons décelé de nombreuses branches où l’application de ce problème pourrait être utile. Pour donner quelques exemples, la résolution du problème du commis voyageur pourrait apporter beaucoup à la résolution de problèmes de logistique, de transport de marchandises ou de personnes. Ceci pourrait même apporter une révolution dans le monde de l’industrie. En effet, la réponse à ce problème pourrait optimiser le fonctionnement des machines, comme percer plusieurs points sur une carte électronique le plus rapidement possible en réduisant au maximum les trajets à effectuer.
