@@ -21,7 +21,10 @@ Ayant la volonté de devenir mathématicien
 plus tard et ayant aussi un large intérêt 
 pour l’informatique, il me 
 paraissait évident de présenter le problème 
-du voyageur de commerce.
+du voyageur de commerce. Ce projet est destiné 
+à toute personne souhaitant avoir une vue d'ensemble 
+du problème du voyageur de commerce sans entrer
+dans des détails trop complexes.
 
 Globalement, la donnée du problème est assez 
 simple et intuitive. Il faut déterminer, à 
