@@ -97,7 +97,16 @@ html_theme_options = {
 
 
 ####### MyST configuration
-myst_enable_extensions = ["colon_fence"]
+myst_enable_extensions = [
+    "colon_fence",
+    "dollarmath",
+    "amsmath",
+    "linkify",
+    "deflist",
+    "tasklist",
+    "attrs_block",
+    "attrs_inline"
+    ]
 
 
 # -- Options for LaTeX output ---------------------------------------------
