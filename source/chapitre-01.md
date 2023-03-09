@@ -2,7 +2,7 @@
 
 Le problème est nommé pour la première fois dès 1832 dans un manuel à destination de commis voyageurs. Il est ensuite repris par William Rowan Hamilton, qui posa ce problème sous la forme d’un jeu dès 1859 avec l’énoncé suivant : 
 
-« Un voyageur de commerce doit visiter une et une seule fois un nombre fini de villes et revenir à son point d’origine. Trouvez l’ordre de visite des villes qui minimise la distance totale parcourue par le voyageur ». 
+> « Un voyageur de commerce doit visiter une et une seule fois un nombre fini de villes et revenir à son point d’origine. Trouvez l’ordre de visite des villes qui minimise la distance totale parcourue par le voyageur ». 
 
 Il est ensuite repris par de nombreux mathématiciens et informaticiens, qui l’étudient encore à ce jour.
 
