@@ -10,7 +10,7 @@ William Rowan Hamilton posa l’une des première fois le problème du voyageur 
 ## Méthode de résolution exacte naïve
 Il est actuellement impossible de trouver une résolution exacte à ce problème pour un grand nombre de villes, car la complexité est exponentielle. Regardons cela ensemble par une approche de résolution exacte naïve, en pratiquant une recherche exhaustive de tous les chemins possibles :
 1.	Posons $n$ points, qui représentent des villes. 
-```{figure} schema_1.png
+```{figure} figures/schema_1.png
 ---
 align: center
 width: 50%
@@ -18,7 +18,7 @@ width: 50%
 ```
 2.	Il existe alors $n!$ chemins possibles, car on ne peut passer qu’une seule fois dans chaque ville. 
 3.	Le point de départ n’influençant pas la longueur totale du trajet, on se retrouve avec $(n-1)!$ chemins différents. 
-```{figure} schema_2.png
+```{figure} figures/schema_2.png
 ---
 align: center
 width: 60%
@@ -26,7 +26,7 @@ width: 60%
 ```
 4.	Enfin, étant donné qu’on peut parcourir le chemin dans les deux sens sans modifier la longueur du trajet total, on peut diviser encore l’expression par deux. Par exemple, pour les quatre villes a,b,c,d, les paires de chemins abcd et dcba, cdab et badc, *etc.* ont la même longueur. 
 Ainsi, on obtient $\frac{(n-1)!}{2}$  chemins candidats à considérer pour obtenir la bonne réponse.
-```{figure} schema_3.png
+```{figure} figures/schema_3.png
 ---
 align: center
 width: 60%
@@ -51,26 +51,59 @@ Avant cela, il est important de définir certains termes qui vont avoir leur imp
     La **borne supérieure**, quant à elle, est une limite qu'aucune solution optimale ne pourra jamais dépasser. Dans ce cas, cette valeur est un trajet quelconque, car si on prend la mauvaise solution on obtient une valeur supérieure à celle qu’on recherche, et dans le cas généralement extrêmement rare où l’on obtient la bonne réponse, la bonne réponse n’est pas en-dessous de la borne supérieure choisie. Pour obtenir des résultats moins variables, on peut aussi utiliser des algorithmes approchés se basant sur des approximations.
 
 
-### Lecture d'un arbre de recherche
-Regardons à présent l'arbre de recherche ci-dessous et tentons de le comprendre.
-
-```{figure} schema_4.png
+### Formation d'un arbre de recherche
+Posons la situation suivante: 
+```{figure} figures/schema_4.png
 ---
 align: center
-width: 60%
+width: 50%
 ---
 ```
+#### Etape par étape
+Pour commencer à créer un arbre de recherche, nous devons tout d'abord définir une ville de départ.
 
-Nous avons les villes $1$, $2$, $3$ et $4$. Nous partons d'une ville, défini provisoirement par $1$ (la longueur d'un trajet est aucunement influencée par le point de départ). Nous appelons $1$ le **nœud initial**. Nous avons alors trois possibilités de trajet, menant chacun aux trois villes restantes. Ces possibilités constituent les trois embranchements initiaux de l’arbre. Chacun des embranchements se sépare à son tour en deux embranchements pour les deux villes restantes, formant des nœuds possédant à nouveau des embranchements jusqu’à ce que cela ne soit plus possible. 
-```{figure} schema_5.png
+```{figure} figures/schema_4a.png
+---
+align: center
+width: 10%
+---
+```
+Nous appelons cette ville le **nœud initial**. Ensuite, il faut explorer tous les trajets possible. Pour cela, nous dessinons l'arbre de la manière suivante:
+```{figure} figures/schema_4b.png
+---
+align: center
+width: 40%
+---
+```
+Cela veut dire qu'à partir de la ville $1$, nous pouvons nous diriger vers la ville $2$, $3$ ou $4$. À partir de là, pour respecter la consigne du problème du voyageur de commerce, nous pouvons uniquement nous diriger vers les noeuds($=\text{villes}$) sur lesquelles nous ne sommes pas déjà passés. Ainsi:
+```{figure} figures/schema_4c.png
+---
+align: center
+width: 50%
+---
+```
+Nous poursuivons le même processus jusqu'à ce que nous ayons visité chacune des villes. Nous obtenons enfin:
+```{figure} figures/schema_4d.png
+---
+align: center
+width: 50%
+---
+```
+#### En résumé
+Pour conclure, nous pouvons résumer l'arbre de la manière suivante:
+
+Nous avons les villes $1$, $2$, $3$ et $4$. Nous partons d'une ville, définie provisoirement par $1$ (la longueur d'un trajet est aucunement influencée par le point de départ), que nous nommons le **nœud initial**. Nous avons alors trois possibilités de trajet, menant chacun à une des trois trois villes qui n'ont pas été visitée. Ces possibilités constituent les trois embranchements initiaux de l’arbre. Chacun des embranchements se sépare à son tour en deux embranchements pour les deux villes restantes (donc non-visitée), formant des nœuds possédant à nouveau des embranchements jusqu’à ce que cela ne soit plus possible. 
+```{figure} figures/schema_5.png
 ---
 align: center
 width: 80%
 ---
 ```
+
+### Réaliser la PSE
 À présent que cet arbre de recherche est formé et compris, il nous faut trouver le trajet optimal. C'est là que la PSE intervient.
 
-
+#### Etapes à réaliser
 Le principe de la PSE est de couper l’exploration de l’arbre à la hauteur de certains nœuds afin de réduire la quantité nécessaire de calculs pour trouver la réponse. Pour savoir quand couper la simulation, nous procédons de la manière suivante :
 1. Calculer la borne supérieure en additionnant toutes les distances et en multipliant par deux (car il faut revenir au point de départ). Cette borne est fixe.
 2. Calculer la borne inférieure en additionnant la distance entre la ville de départ et la ville la plus proche.
@@ -81,18 +114,19 @@ Le principe de la PSE est de couper l’exploration de l’arbre à la hauteur d
 
 Cette méthode permet ainsi d'augmenter la rapidité des calculs, car permet de couper les branches inutiles à explorer. Cependant, ce n'est pas une méthode sufisamment efficace pour permettre de calculer le trajet optimal comportant le passage au travers d'un grand nombre de villes.
 
-## Exemple
+#### Exemple
 Prenons les 3 villes suivantes ainsi que la distance les séparant:
-```{figure} schema_6.png
+```{figure} figures/schema_6.png
 ---
 align: center
 width: 70%
 ---
 ```
 On peut alors constuire l'arbre de recherche suivant:
-```{figure} schema_7.png
+```{figure} figures/schema_7.png
 ---
 align: center
 width: 60%
 ---
 ```
+Dans cette notation, les chiffres en gras représentent la distance (souvent nommé "coût") entre deux noeuds. À partir de là, 
