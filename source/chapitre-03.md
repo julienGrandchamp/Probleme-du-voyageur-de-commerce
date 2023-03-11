@@ -159,7 +159,7 @@ Borne inférieure $=$ distance parcourue + distance minimale
 Borne inférieure $= 3+2.5+1+2 = 8.5$m
 
 #### Comparer les bornes
-La borne supérieure est plus grande que la borne inférieure car $11.6>8.5$. Nous ne pouvons pas couper la simulation pour cette branche.
+La borne supérieure est plus grande que la borne inférieure car $11.6\text{m}>8.5\text{m}$. Nous ne pouvons pas couper la simulation pour cette branche.
 
 #### Calculer le prochain embranchement
 Nous avons parcouru A, B, D. Nous nous dirigeons à présent vers C. La borne inférieure vaut la distance AB + BD + DC + la distance minimale existante. Nous obtenons alors $3+2.5+2.6+1=9.1$m
@@ -167,5 +167,5 @@ Nous avons parcouru A, B, D. Nous nous dirigeons à présent vers C. La borne in
 #### Comparer les bornes
 $9.1\text{m}<11.6\text{m}$, par conséquent nous poursuivons les calculs. 
 
-#### Longueur total du trajet ABDCA
+#### Longueur totale du trajet ABDCA
 Nous sommes obligé de prendre le dernier chemin restant, qui consiste à revenir au point de départ. Ainsi, le trajet vaut $3+2.5+2.6+2=10.1\text{m}$. Ce résultat ne nous sert à rien à présent, car il nous faut calculer tous les embranchements pour pouvoir le comparer aux trajets potentiellement optimaux obtenus, afin de savoir si le trajet ABDCA est le meilleur trajet ou non. En l'occurence, ce chemin est le plus optimal possible avec son inverse, ACDBA.
