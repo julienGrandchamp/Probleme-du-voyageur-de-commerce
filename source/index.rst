@@ -8,7 +8,7 @@ Problème du voyageur de commerce
 =================================
 
 ..  toctree::
-    :maxdepth: 2
+    :maxdepth: 3
     :caption: Table des matières
 
     introduction.rst
