@@ -6,7 +6,7 @@ William Rowan Hamilton posa l’une des première fois le problème du voyageur 
 > « Un voyageur de commerce doit visiter une et une seule fois un nombre fini de villes et revenir à son point d’origine. Trouvez l’ordre de visite des villes qui minimise la distance totale parcourue par le voyageur ».
 
 ## Introduction
-Cherchons à présent une méthode de résolution exacte un peu moins naïve et plus efficace. Pour cela, nous allons utiliser la **Procédure par Séparation et Évaluation**, abrégée par les initiales **PSE** et nommé **branch & bound** en anglais. C’est une méthode qui repose sur le parcours d’un arbre de recherche auquel on va couper la simulation dans certaines branches lorsqu’il est évident que ce n’est pas le chemin optimal. 
+Cherchons à présent une méthode de résolution exacte un peu moins naïve et plus efficace. Pour cela, nous allons utiliser la **Procédure par Séparation et Évaluation**, abrégée par les initiales **PSE** et nommé **branch & bound** en anglais. C’est une méthode qui repose sur le parcours d’un arbre de recherche auquel nous allons couper la simulation dans certaines branches lorsqu’il est évident que ce n’est pas le chemin optimal. 
 
 ## Notions de base
 Avant cela, il est important de définir certains termes qui vont avoir leur importance dans l’application de cette méthode :
@@ -15,7 +15,7 @@ Avant cela, il est important de définir certains termes qui vont avoir leur imp
 
     Une **borne inférieure** est une valeur qui est égale ou inférieure à la valeur de la meilleure solution possible. Dans le cas présent, il suffit pour l’obtenir d’additionner au trajet déjà effectué le poids des $N$ distances les plus proches entre deux villes. Même si cette solution a une grande probabilité de ne pas être réalisable, la valeur de la solution optimale ne pourra pas être plus petite que la borne inférieure. 
 
-    La **borne supérieure**, quant à elle, est une limite qu'aucune solution optimale ne pourra jamais dépasser. Dans ce cas, cette valeur est un trajet quelconque, car si on prend la mauvaise solution on obtient une valeur supérieure à celle qu’on recherche, et dans le cas généralement extrêmement rare où l’on obtient la bonne réponse, la bonne réponse n’est pas en-dessous de la borne supérieure choisie. Pour obtenir des résultats moins variables, on peut aussi utiliser des algorithmes approchés se basant sur des approximations.
+    La **borne supérieure**, quant à elle, est une limite qu'aucune solution optimale ne pourra jamais dépasser. Dans ce cas, cette valeur est un trajet quelconque, car nous obtenons dans la très grande majorité des cas (pour un grand nombre de ville) une valeur supérieure à celle qu’on recherche. Dans le cas généralement extrêmement rare où nous obtenons la bonne réponse, ce n'est pas un problème car cette dernière n’est pas en-dessous de la borne supérieure choisie. Pour obtenir des résultats moins variables, nous pouvons aussi utiliser des algorithmes approchés se basant sur des approximations.
 
 
 ## Formation d'un arbre de recherche
@@ -103,7 +103,7 @@ width: 80%
 ### Etapes à réaliser
 Le principe de la PSE est de couper l’exploration de l’arbre à la hauteur de certains nœuds afin de réduire la quantité nécessaire de calculs pour trouver la réponse. Pour savoir quand couper la simulation, nous procédons de la manière suivante :
 1. Calculer la borne supérieure en suivant un chemin au hasard ou par un algorithme approché. Cette borne est fixe, mais peut toutefois être actualisée lorsqu'un trajet plus court que ladite borne a été décelé.
-2. Explorer toutes les options pour le prochain embranchement, en calculant la borne inférieure pour chacune de ces options. Pour cela, on rajoute à la distance déjà parcourue les $x$ distances manquantes les plus courtes de l'embranchement.
+2. Explorer toutes les options pour le prochain embranchement, en calculant la borne inférieure pour chacune de ces options. Pour cela, nous rajoutons à la distance déjà parcourue les $x$ distances manquantes les plus courtes de l'embranchement.
 3. Couper les embranchements dont la borne inférieure est supérieure ou égale à la borne supérieure.
 4. Répéter les étapes 2, 3 et 4 jusqu'à ce que tous les embranchements soient complétés.
 5. Trouver le chemin le plus court parmi les configurations restantes.
@@ -132,7 +132,7 @@ On peut alors constuire l'arbre de recherche suivant:
 ```{figure} figures/schema_7.png
 ---
 align: center
-width: 60%
+width: 80%
 ---
 *L'arbre de recherche correspondant à la situation ci-dessus posée.*
 ```
@@ -141,4 +141,31 @@ width: 60%
 Dans cette notation, les chiffres en gras représentent la distance (souvent nommé "coût") entre deux noeuds. À partir de là, nous pouvons suivre la procédure décrite plus haut.
 
 #### Borne supérieure
-Il faut tout d'abord calculer la borne supérieure. Pour Cela,
+Il faut tout d'abord calculer la borne supérieure. Pour cela, prenons un chemin au hasard. Disons A,B,C,D et A. Nous avons alors $3+5+2.6+1=11.6$m. Le chemin optimal ne pourra pas être au dessus de cette limite arbitrairement fixée à $11.6$m.
+
+#### Calculer le prochain embranchement
+Dans le cadre de cet exemple, nous allons seulement calculer le trajet A, B, D, C, et A.
+
+Nous devons calculer la borne inférieure en additionnant à la distance entre A et B ($=$ 3m)les 3 valeurs minimales présentes dans cet embranchement (car nous avons 4 villes moins le B). Ainsi, la borne inférieure vaut $3+2.5+1+2=8.5$m.
+
+#### Comparer les bornes
+De cette manière, nous observons que la borne supérieure $>$ la borne inférieure car $11.6$m $>$ $8.5$m. Nous ne pouvons par conséquent pas rejeter cet embranchement. Par conséquent, nous devons continuer les démarches.
+
+#### Calculer le prochain embranchement
+Nous somme au noeud B du premier embranchement. Nous devons calculer la borne inférieure de l'ambranchement menant à la ville D. Nous avons parcouru A, B, D. Il nous reste deux villes à parcourir. 
+
+Borne inférieure $=$ distance parcourue + distance minimale
+
+Borne inférieure $= 3+2.5+1+2 = 8.5$m
+
+#### Comparer les bornes
+La borne supérieure est plus grande que la borne inférieure car $11.6>8.5$. Nous ne pouvons pas couper la simulation pour cette branche.
+
+#### Calculer le prochain embranchement
+Nous avons parcouru A, B, D. Nous nous dirigeons à présent vers C. La borne inférieure vaut la distance AB + BD + DC + la distance minimale existante. Nous obtenons alors $3+2.5+2.6+1=9.1$m
+
+#### Comparer les bornes
+$9.1\text{m}<11.6\text{m}$, par conséquent nous poursuivons les calculs. 
+
+#### Longueur total du trajet ABDCA
+Nous sommes obligé de prendre le dernier chemin restant, qui consiste à revenir au point de départ. Ainsi, le trajet vaut $3+2.5+2.6+2=10.1\text{m}$. Ce résultat ne nous sert à rien à présent, car il nous faut calculer tous les embranchements pour pouvoir le comparer aux trajets potentiellement optimaux obtenus, afin de savoir si le trajet ABDCA est le meilleur trajet ou non. En l'occurence, ce chemin est le plus optimal possible avec son inverse, ACDBA.
