@@ -85,7 +85,7 @@ Afin de respecter les consignes du problème de voyageur de commerce, il est né
 ### En résumé
 Pour conclure, nous pouvons résumer l'arbre de la manière suivante:
 
-Nous avons les villes $1$, $2$, $3$ et $4$. Nous partons d'une ville, définie provisoirement par $1$ (la longueur d'un trajet est aucunement influencée par le point de départ), que nous nommons le **nœud initial**. Nous avons alors trois possibilités de trajet, menant chacun à une des trois trois villes qui n'ont pas été visitée. Ces possibilités constituent les trois embranchements initiaux de l’arbre. Chacun des embranchements se sépare à son tour en deux embranchements pour les deux villes restantes (donc non-visitée), formant des nœuds possédant à nouveau des embranchements jusqu’à ce que cela ne soit plus possible. 
+Nous avons les villes $1$, $2$, $3$ et $4$. Nous partons d'une ville, définie provisoirement par $1$ (la longueur d'un trajet est aucunement influencée par le point de départ), que nous nommons le **nœud initial**. Nous avons alors trois possibilités de trajet, menant chacun à une des trois trois villes qui n'ont pas été visitée. Ces possibilités constituent les trois embranchements initiaux de l’arbre. Chacun des embranchements se sépare à son tour en deux embranchements pour les deux villes restantes (donc non-visitées), formant des nœuds possédant à nouveau des embranchements jusqu’à ce que cela ne soit plus possible. 
 
 
 ```{figure} figures/schema_5.png
@@ -146,7 +146,7 @@ Il faut tout d'abord calculer la borne supérieure. Pour cela, prenons un chemin
 #### Calculer le prochain embranchement
 Dans le cadre de cet exemple, nous allons seulement calculer le trajet A, B, D, C, et A.
 
-Nous devons calculer la borne inférieure en additionnant à la distance entre A et B ($=$ 3m)les 3 valeurs minimales présentes dans cet embranchement (car nous avons 4 villes moins le B). Ainsi, la borne inférieure vaut $3+2.5+1+2=8.5$m.
+Nous devons calculer la borne inférieure en additionnant à la distance entre A et B ($=$ 3m) les 3 valeurs minimales présentes dans cet embranchement (car nous avons 4 villes moins le B). Ainsi, la borne inférieure vaut $3+2.5+1+2=8.5$m.
 
 #### Comparer les bornes
 De cette manière, nous observons que la borne supérieure $>$ la borne inférieure car $11.6$m $>$ $8.5$m. Nous ne pouvons par conséquent pas rejeter cet embranchement. Par conséquent, nous devons continuer les démarches.
