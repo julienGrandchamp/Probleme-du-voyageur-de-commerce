@@ -11,10 +11,11 @@ Problème du voyageur de commerce
     :maxdepth: 2
     :caption: Table des matières
 
-    introduction.rst
+    introduction.md
     chapitre-01.md
     chapitre-02.md
     chapitre-03.md
+    chapitre-04.md
     conclusion.rst
     references.rst
 

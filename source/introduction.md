@@ -1,7 +1,5 @@
-.. _introduction.rst:
 
-Introduction
-############
+# Introduction
 
 Il existe de nombreux problèmes 
 qui exigent pour leur résolution des compétences
@@ -11,6 +9,14 @@ du voyageur de commerce – aussi nommé
 le problème du commis voyageur ou, en 
 anglais, the *Traveling salesman problem* – 
 en fait partie.
+
+```{figure} figures/schema_intro.png
+---
+align: center
+width: 30%
+---
+*Problème du voyageur de commerce.*
+```
 
 Si mon projet d'OC s’intéresse 
 à ce sujet, c’est que la collaboration 
