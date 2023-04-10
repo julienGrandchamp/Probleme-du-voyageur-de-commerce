@@ -3,7 +3,7 @@
 ## Rappel du problème
 William Rowan Hamilton posa l’une des première fois le problème du voyageur de commerce dès 1859 avec l’énoncé suivant : 
 
-> « Un voyageur de commerce doit visiter une et une seule fois un nombre fini de villes et revenir à son point d’origine. Trouvez l’ordre de visite des villes qui minimise la distance totale parcourue par le voyageur ».
+> « Un voyageur de commerce doit visiter une et une seule fois un nombre fini de villes et revenir à son point d’origine. Trouvez l’ordre de visite des villes qui minimise la distance totale parcourue par le voyageur. »
 
 ## Introduction
 Cherchons à présent une méthode de résolution exacte un peu moins naïve et plus efficace. Pour cela, nous allons utiliser la **Procédure par Séparation et Évaluation**, abrégée par les initiales **PSE** et nommé **branch & bound** en anglais. C’est une méthode qui repose sur le parcours d’un arbre de recherche auquel nous allons couper la simulation dans certaines branches lorsqu’il est évident que ce n’est pas le chemin optimal. 
@@ -27,7 +27,7 @@ Posons la situation suivante:
 align: center
 width: 50%
 ---
-*Admettons que nous souhaitons traverser de la manière la plus optimale possible les quatre villes affichées.*
+*Admettons que nous souhaitons parcourir de la manière la plus optimale possible les quatre villes affichées.*
 ```
 
 
@@ -56,7 +56,7 @@ width: 40%
 ```
 
 
-Cela veut dire qu'à partir de la ville $1$, nous pouvons nous diriger vers la ville $2$, $3$ ou $4$. À partir de là, pour respecter la consigne du problème du voyageur de commerce, nous pouvons uniquement nous diriger vers les noeuds($=$ villes) sur lesquelles nous ne sommes pas déjà passés. Ainsi:
+Cela veut dire qu'à partir de la ville $1$, nous pouvons nous diriger vers la ville $2$, $3$ ou $4$. À partir de là, pour respecter la consigne du problème du voyageur de commerce, nous pouvons uniquement nous diriger vers les noeuds ($=$ villes) sur lesquelles nous ne sommes pas déjà passés. Ainsi:
 
 
 ```{figure} figures/schema_4c.png
@@ -108,7 +108,7 @@ Le principe de la PSE est de couper l’exploration de l’arbre à la hauteur d
 4. Répéter les étapes 2, 3 et 4 jusqu'à ce que tous les embranchements soient complétés.
 5. Trouver le chemin le plus court parmi les configurations restantes.
 
-Cette méthode permet ainsi d'augmenter la rapidité des calculs, car permet de couper les branches inutiles à explorer. Cependant, ce n'est pas une méthode sufisamment efficace pour permettre de calculer le trajet optimal comportant le passage au travers d'un grand nombre de villes.
+Cette méthode permet ainsi d'augmenter la rapidité des calculs, car elle permet de couper les branches inutiles à explorer. Cependant, ce n'est pas une méthode sufisamment efficace pour permettre de calculer le trajet optimal comportant le passage au travers d'un grand nombre de villes.
 
 ### Exemple
 
@@ -121,7 +121,7 @@ Prenons les 3 villes suivantes ainsi que la distance les séparant:
 align: center
 width: 70%
 ---
-*Les points oranges représentes les villes à travers lesquels nous souhaitons passer.*
+*Les points oranges représentent les villes à travers lesquelles nous souhaitons passer.*
 ```
 
 #### Création de l'arbre de recherche
@@ -144,15 +144,15 @@ Dans cette notation, les chiffres en gras représentent la distance (souvent nom
 Il faut tout d'abord calculer la borne supérieure. Pour cela, prenons un chemin au hasard. Disons A,B,C,D et A. Nous avons alors $3+5+2.6+1=11.6$m. Le chemin optimal ne pourra pas être au dessus de cette limite arbitrairement fixée à $11.6$m.
 
 #### Calculer le prochain embranchement
-Dans le cadre de cet exemple, nous allons seulement calculer le trajet A, B, D, C, et A.
+Dans le cadre de cet exemple, nous allons seulement calculer le trajet A, B, D, C, et A. Cependant, il est nécessaire pour la résolution de ce problème de parcourir tous les trajets possibles, ce qui demanderait beaucoup de temps. 
 
 Nous devons calculer la borne inférieure en additionnant à la distance entre A et B ($=$ 3m) les 3 valeurs minimales présentes dans cet embranchement (car nous avons 4 villes moins le B). Ainsi, la borne inférieure vaut $3+2.5+1+2=8.5$m.
 
 #### Comparer les bornes
-De cette manière, nous observons que la borne supérieure $>$ la borne inférieure car $11.6$m $>$ $8.5$m. Nous ne pouvons par conséquent pas rejeter cet embranchement. Par conséquent, nous devons continuer les démarches.
+De cette manière, nous observons que la borne supérieure $>$ la borne inférieure car $11.6$m $>$ $8.5$m. Nous ne pouvons par conséquent pas rejeter cet embranchement. Nous devons donc poursuivre les démarches.
 
 #### Calculer le prochain embranchement
-Nous somme au noeud B du premier embranchement. Nous devons calculer la borne inférieure de l'ambranchement menant à la ville D. Nous avons parcouru A, B, D. Il nous reste deux villes à parcourir. 
+Nous sommes au noeud B du premier embranchement. Nous devons calculer la borne inférieure de l'embranchement menant à la ville D. Nous avons parcouru A, B, D. Il nous reste deux villes à parcourir. 
 
 Borne inférieure $=$ distance parcourue + distance minimale
 
@@ -168,4 +168,4 @@ Nous avons parcouru A, B, D. Nous nous dirigeons à présent vers C. La borne in
 $9.1\text{m}<11.6\text{m}$, par conséquent nous poursuivons les calculs. 
 
 #### Longueur totale du trajet ABDCA
-Nous sommes obligé de prendre le dernier chemin restant, qui consiste à revenir au point de départ. Ainsi, le trajet vaut $3+2.5+2.6+2=10.1\text{m}$. Ce résultat ne nous sert à rien à présent, car il nous faut calculer tous les embranchements pour pouvoir le comparer aux trajets potentiellement optimaux obtenus, afin de savoir si le trajet ABDCA est le meilleur trajet ou non. En l'occurence, ce chemin est le plus optimal possible avec son inverse, ACDBA.
+Nous prenons le dernier chemin restant, qui consiste à revenir au point de départ (et qui est par définition unique). Ainsi, le trajet vaut $3+2.5+2.6+2=10.1\text{m}$. Ce résultat ne nous sert à rien à présent, car il nous faut calculer tous les embranchements pour pouvoir le comparer aux trajets potentiellement optimaux obtenus, afin de savoir si le trajet ABDCA est le plus court possible ou non. En l'occurence, ce chemin est le plus optimal avec son inverse, ACDBA.
